@@ -4,7 +4,7 @@ require 'pry'
 class Volunteer
   attr_reader(:name, :project_id, :id)
 
-  def inializer(attributes)
+  def initialize(attributes)
     @name = attributes.fetch(:name)
     @project_id = attributes.fetch(:project_id)
     @id = attributes.fetch(:id)
@@ -22,7 +22,7 @@ class Volunteer
   end
 
   def ==(another_volunteer)
-  self.name().==(another_volunteer.name()).&(self.id().==(another_volunteer.id()))
+  self.name().==(another_volunteer.name()).&(self.project_id().==(another_volunteer.project_id())).&(self.id().==(another_volunteer.id()))
   end
 
 end
