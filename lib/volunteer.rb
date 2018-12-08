@@ -27,6 +27,15 @@ class Volunteer
     @id = volunteer_list.first().fetch("id").to_i
   end
 
+  def self.find(id)
+    volunteer = DB.exec("SELECT * FROM volunteers WHERE id = #{id};").first
+    name = volunteer.fetch("name")
+    project_id = volunteer.fetch("project_id").to_i
+    id = volunteer.fetch("id").to_i
+    this_volunteer = Volunteer.new({:name => name, :project_id => project_id, :id => id})
+    this_volunteer
+  end
+
   def ==(another_volunteer)
   self.name().==(another_volunteer.name()).&(self.project_id().==(another_volunteer.project_id())).&(self.id().==(another_volunteer.id()))
   end
