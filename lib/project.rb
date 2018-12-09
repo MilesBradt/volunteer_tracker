@@ -46,6 +46,14 @@ class Project
     volunteers
   end
 
+  def update(attributes)
+    @title = attributes.fetch(:title, @title)
+    @id = self.id()
+    DB.exec("UPDATE projects SET title = '#{@title}' WHERE id = #{@id};")
+
+    end
+  end
+
   def ==(another_volunteer)
   self.title().==(another_volunteer.title()).&(self.id().==(another_volunteer.id()))
   end
