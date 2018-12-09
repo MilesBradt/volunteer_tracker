@@ -1,0 +1,12 @@
+<% if @projects.any?() %>
+<h1>Projects</h1>
+<ul>
+<% @projects.each do |project| %>
+  <li>
+    <%= project.title %>
+  </li>
+<% end %>
+</ul>
+<% else %>
+  <p>There are no projects added yet</p>
+<% end %>

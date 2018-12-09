@@ -56,7 +56,6 @@ class Project
     DB.exec("DELETE FROM projects WHERE id = #{self.id()};")
   end
 
-
   def ==(another_volunteer)
   self.title().==(another_volunteer.title()).&(self.id().==(another_volunteer.id()))
   end
