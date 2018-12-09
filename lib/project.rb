@@ -50,8 +50,12 @@ class Project
     @title = attributes.fetch(:title, @title)
     @id = self.id()
     DB.exec("UPDATE projects SET title = '#{@title}' WHERE id = #{@id};")
-
   end
+
+  def delete
+    DB.exec("DELETE FROM projects WHERE id = #{self.id()};")
+  end
+
 
   def ==(another_volunteer)
   self.title().==(another_volunteer.title()).&(self.id().==(another_volunteer.id()))
