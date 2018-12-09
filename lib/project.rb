@@ -21,16 +21,29 @@ class Project
   end
 
   def save
-    volunteer_list = DB.exec("INSERT INTO projects (title) VALUES ('#{@title}') RETURNING id;")
-    @id = volunteer_list.first().fetch("id").to_i
+    project_list = DB.exec("INSERT INTO projects (title) VALUES ('#{@title}') RETURNING id;")
+    @id = project_list.first().fetch("id").to_i
+
   end
 
   def self.find(id)
-    volunteer = DB.exec("SELECT * FROM projects WHERE id = #{id};").first
-    title = volunteer.fetch("title")
-    id = volunteer.fetch("id").to_i
-    this_volunteer = Project.new({:title => title , :id => id})
-    this_volunteer
+    project = DB.exec("SELECT * FROM projects WHERE id = #{id};").first
+    title = project.fetch("title")
+    id = project.fetch("id").to_i
+    this_project = Project.new({:title => title , :id => id})
+    this_project
+  end
+
+  def volunteers
+    list = DB.exec("SELECT * FROM volunteers;")
+    volunteers = []
+    list.each() do |volunteer|
+      name = volunteer.fetch("name")
+      project_id = volunteer.fetch("project_id").to_i
+      id = volunteer.fetch("id").to_i
+      volunteers.push(Volunteer.new({:name => name, :project_id => project_id, :id => id}))
+    end
+    volunteers
   end
 
   def ==(another_volunteer)
