@@ -51,7 +51,6 @@ class Project
     @id = self.id()
     DB.exec("UPDATE projects SET title = '#{@title}' WHERE id = #{@id};")
 
-    end
   end
 
   def ==(another_volunteer)
