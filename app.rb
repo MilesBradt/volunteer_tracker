@@ -21,3 +21,7 @@ post("/") do
   @projects = Project.all
   erb(:index)
 end
+
+get("/:title") do
+  
+end

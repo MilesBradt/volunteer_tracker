@@ -3,7 +3,7 @@
 <ul>
 <% @projects.each do |project| %>
   <li>
-    <%= project.title %>
+    <a href="/<%= project.title %>"></a> <%= project.title %> </a>
   </li>
 <% end %>
 </ul>
