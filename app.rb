@@ -43,6 +43,7 @@ post("/edit/:id") do
   id = params[:id]
   edit = params.fetch("edit")
   @project = Project.find(id)
+  @project_volunteers = @project.volunteers
   @project.update({:title => edit, :id => id})
   erb(:project)
 end

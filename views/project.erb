@@ -1,5 +1,5 @@
 <h1> <%= @project.title %> </h1>
-
+<% if @project_volunteers.any?() %>
 <h1>Project Volunteer(s)</h1>
 <ul>
 <% @project_volunteers.each do |volunteer| %>
@@ -8,6 +8,9 @@
   </li>
 <% end %>
 </ul>
+<% else %>
+  <p>There are no volunteers added yet</p>
+<% end %>
 
 <form action="/add/<%= @project.id %>" method="post">
 
