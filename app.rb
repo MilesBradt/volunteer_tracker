@@ -5,7 +5,6 @@ require("./lib/volunteer")
 require("./lib/project")
 require("pg")
 
-
 # DB = PG.connect({:dbname => "volunteer_tracker_test"})
 DB = PG.connect({:dbname => "volunteer_tracker"})
 
@@ -13,7 +12,6 @@ get("/") do
   @projects = Project.all
   erb(:index)
 end
-
 
 post("/") do
   title = params.fetch("title")
