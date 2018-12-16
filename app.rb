@@ -24,7 +24,6 @@ end
 
 get("/:id") do
   id = params[:id]
-  binding.pry
   @project = Project.find(id)
   erb(:project)
 end
