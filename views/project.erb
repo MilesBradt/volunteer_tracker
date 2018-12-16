@@ -1,4 +1,14 @@
-<p> <%= @project.title %> </p>
+<h1> <%= @project.title %> </h1>
+
+<h1>Project Volunteer(s)</h1>
+<ul>
+<% @project_volunteers.each do |volunteer| %>
+  <li>
+    <a href="/volunteer/<%= volunteer.id %>"><%= volunteer %> </a>
+  </li>
+<% end %>
+</ul>
+
 
 <form action="/edit/<%= @project.id %>" method="post">
 

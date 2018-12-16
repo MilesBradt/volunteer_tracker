@@ -25,6 +25,7 @@ end
 get("/:id") do
   id = params[:id]
   @project = Project.find(id)
+  @project_volunteers = @project.volunteers
   erb(:project)
 end
 
@@ -42,4 +43,9 @@ get("/delete/:id") do
   @project = Project.find(id)
   @project.delete
   redirect("/")
+end
+
+get("/volunteer/:id") do
+  id = params[:id]
+  @volunteer = Volunteer.find(id)
 end

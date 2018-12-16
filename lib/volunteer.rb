@@ -36,6 +36,12 @@ class Volunteer
     this_volunteer
   end
 
+  def update(attributes)
+    @name = attributes.fetch(:name, @name)
+    @id = self.id()
+    DB.exec("UPDATE projects SET name = '#{@name}' WHERE id = #{@id};")
+  end
+
   def ==(another_volunteer)
   self.name().==(another_volunteer.name()).&(self.project_id().==(another_volunteer.project_id())).&(self.id().==(another_volunteer.id()))
   end
