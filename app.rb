@@ -22,6 +22,9 @@ post("/") do
   erb(:index)
 end
 
-get("/:title") do
-  
+get("/:id") do
+  id = params[:id]
+  binding.pry
+  @project = Project.find(id)
+  erb(:project)
 end
