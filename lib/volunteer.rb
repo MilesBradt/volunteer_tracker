@@ -39,7 +39,7 @@ class Volunteer
   def update(attributes)
     @name = attributes.fetch(:name, @name)
     @id = self.id()
-    DB.exec("UPDATE projects SET name = '#{@name}' WHERE id = #{@id};")
+    DB.exec("UPDATE volunteers SET name = '#{@name}' WHERE id = #{@id};")
   end
 
   def ==(another_volunteer)

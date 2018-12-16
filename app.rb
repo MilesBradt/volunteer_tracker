@@ -29,6 +29,16 @@ get("/:id") do
   erb(:project)
 end
 
+post("/add/:id") do
+  project_id = params[:id]
+  @project = Project.find(project_id)
+  name = params.fetch("add")
+  volunteer = Volunteer.new({:name => name, :project_id => project_id, :id => nil})
+  volunteer.save
+  @project_volunteers = @project.volunteers
+  erb(:project)
+end
+
 post("/edit/:id") do
   id = params[:id]
   edit = params.fetch("edit")
@@ -48,4 +58,5 @@ end
 get("/volunteer/:id") do
   id = params[:id]
   @volunteer = Volunteer.find(id)
+  erb(:volunteer)
 end

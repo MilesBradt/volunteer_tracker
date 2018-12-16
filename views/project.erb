@@ -4,10 +4,20 @@
 <ul>
 <% @project_volunteers.each do |volunteer| %>
   <li>
-    <a href="/volunteer/<%= volunteer.id %>"><%= volunteer %> </a>
+    <a href="/volunteer/<%= volunteer.id %>"><%= volunteer.name %> </a>
   </li>
 <% end %>
 </ul>
+
+<form action="/add/<%= @project.id %>" method="post">
+
+  <div class="form-group">
+    <label for="add">Add Volunteer</label>
+    <input type="text" name="add">
+  </div>
+  <br>
+  <button type="submit" name="Add Volunteer">Add Volunteer</button>
+</form>
 
 
 <form action="/edit/<%= @project.id %>" method="post">
