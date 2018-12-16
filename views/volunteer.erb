@@ -1,1 +1,15 @@
-<%= @volunteer.name %>
+<h1> <%= @volunteer.name %> </h1>
+
+<form action="/edit_volunteer/<%= @volunteer.id %>" method="post">
+
+  <div class="form-group">
+    <label for="edit_volunteer">Edit Volunteer Name</label>
+    <input type="text" name="edit_volunteer">
+  </div>
+  <br>
+  <button type="submit" name="Edit Volunteer">Edit Volunteer</button>
+</form>
+
+<form action="/delete/<%= @volunteer.id %>" method="get">
+  <button type="submit" name="Delete Volunteer">Delete Volunteer</button>
+</form>
