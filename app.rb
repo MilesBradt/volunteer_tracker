@@ -35,3 +35,11 @@ post("/edit/:id") do
   @project.update({:title => edit, :id => id})
   erb(:project)
 end
+
+
+get("/delete/:id") do
+  id = params[:id]
+  @project = Project.find(id)
+  @project.delete
+  redirect("/")
+end
