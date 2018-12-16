@@ -1,1 +1,11 @@
 <p> <%= @project.title %> </p>
+
+<form action="/edit/<%= @project.id %>" method="post">
+
+  <div class="form-group">
+    <label for="edit">Edit Project Name</label>
+    <input type="text" name="edit">
+  </div>
+  <br>
+  <button type="submit" name="Edit Project">Edit Project</button>
+</form>

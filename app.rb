@@ -27,3 +27,11 @@ get("/:id") do
   @project = Project.find(id)
   erb(:project)
 end
+
+post("/edit/:id") do
+  id = params[:id]
+  edit = params.fetch("edit")
+  @project = Project.find(id)
+  @project.update({:title => edit, :id => id})
+  erb(:project)
+end
