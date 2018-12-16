@@ -47,6 +47,14 @@ post("/edit/:id") do
   erb(:project)
 end
 
+post("/edit_volunteer/:id") do
+  id = params[:id]
+  edit = params.fetch("edit_volunteer")
+  @volunteer = Volunteer.find(id)
+  @volunteer.update({:name => edit, :id => id})
+  erb(:volunteer)
+end
+
 
 get("/delete/:id") do
   id = params[:id]
